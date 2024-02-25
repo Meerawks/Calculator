@@ -30,9 +30,14 @@
    
 }
 #display-text{
-    position: relative;
-    left:90%;
-    top:70%;
+    font-size: xx-large;
+    height: 90px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin: 10px;
+    
+    
 }
 .list{
     display: flex;
