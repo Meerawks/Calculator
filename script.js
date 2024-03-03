@@ -7,9 +7,28 @@ let equation=[];
 let input="";
 let equationEvaluate=false;
 let operators=['x','+','-','÷','%','='];
+let historyCount=0;
+let clickCount=1;
 
 const output=document.querySelector('#display-text');
 const secondOutput=document.querySelector('#secondary-text');
+const calBody=document.querySelector('#cal-body');
+const historyDIV=document.querySelector('#history');
+historyDIV.style.display = "none";
+const historyElement=document.querySelector('#history-element');
+const clock=document.querySelector('#clock');
+
+clock.addEventListener('click',()=>{
+    clickCount++;
+    if(clickCount%2==0){
+    historyDIV.style.display = "block";
+    historyDIV.classList.add("animate");
+    calBody.classList.add("animate-out");
+    }else{
+    historyDIV.style.display = "none";
+    element.classList.remove("animate");
+    }
+})
 
 buttons.forEach(button=>{
     button.addEventListener('click',function getEventText(event){
@@ -35,6 +54,7 @@ buttons.forEach(button=>{
                  equation.push(input);
                  console.table(equation);
                 console.table(equation);
+                historyElement.innerHTML+=equation.join("");
                 secondOutput.textContent=equation.join("");
                 input="";
                 evaluate(equation);
@@ -50,13 +70,16 @@ buttons.forEach(button=>{
                 console.table(equation);
                 equation.push(input);
                 console.table(equation);
+                historyElement.innerHTML+=equation.join("");
                 equation.push(buttonPressed);
                 console.table(equation);
+            
                 secondOutput.textContent=equation.join("");
                 evaluate(equation);
                 equation.push(input);
                 equation.push(buttonPressed);
                 console.table(equation);
+               
                 secondOutput.textContent=equation.join("")
                 console.table(equation);
                 input="";
@@ -71,7 +94,8 @@ buttons.forEach(button=>{
                     if(equation[0]!=''){
                      console.log(equation[0]);
                 equation.push(buttonPressed);
-                secondOutput.textContent=equation.join("");
+                
+                secondOutput.innerText=equation.join("");
              output.textContent='';
              input="";
                console.table(equation);
@@ -124,6 +148,10 @@ buttons.forEach(button=>{
         
     })
 })
+function addHistory(element){
+   element.textContent=equation[0];
+    history.appendChild(element);
+}
 
 function isFloat(n) {
     return Number(n) === n && n % 1 !== 0;
@@ -168,6 +196,18 @@ function evaluate(arr){
             result=result.toFixed(2);
         }
       output.textContent=result;
+      
+      historyElement.innerText+='\n ='+ result+"\n\n";
+      historyCount++;
+      console.log(historyCount);
+      let str=historyElement.innerHTML;
+      let historyArray=str.split('<br><br>');
+      if(historyCount>6){
+        historyArray.shift();
+        historyElement.innerHTML=historyArray.join('<br><br>');
+
+      }
+      console.table(historyArray);
       console.log(result);
       input=result.toString();
       equation.length=0;
