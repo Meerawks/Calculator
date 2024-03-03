@@ -1,4 +1,4 @@
-A simple  calculator project for 'The Odin Project'.
+A simple  calculator project for 'The Odin Project'. I have added additional 'View History' feature as well.
 This calculator is not perfect, let me know of any bugs!
 
 <h3>What I learned:</h3>
