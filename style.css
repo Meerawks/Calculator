@@ -11,6 +11,17 @@
     font-size: medium;
     text-decoration: none;
     color: rgb(255, 255, 255);
+    
+   
+}
+body{
+    background-image: url("moon_space_black_185222_3840x2160.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center;
 }
 .cal-body{
     display: flex;
@@ -23,6 +34,16 @@
     padding: 10px;
     border-radius: 2%;
     cursor: pointer;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(121, 121, 121, 0.349);
+  
+}
+.heading{
+    margin-top: 30px;
+    text-align: center;
+    font-size: xx-large;
+    color: rgb(192, 192, 192);
 }
 
 .output{
@@ -33,11 +54,12 @@
     align-items: end;
     justify-content: space-between;
     margin: 10px;
-    background-color: rgb(68, 68, 68);
+    background-color: rgb(51, 51, 51);
     border-radius: 2%;
-    box-shadow: -1px -2px 13px 2px rgba(0,0,0,0.72) inset;
-    -webkit-box-shadow: -1px -2px 13px 2px rgba(0,0,0,0.72) inset;
-    -moz-box-shadow: -1px -2px 13px 2px rgba(0,0,0,0.72) inset;
+    
+    box-shadow: -1px 1px 54px -26px rgba(0, 0, 0, 0.486) inset;
+    -webkit-box-shadow: -1px 1px 54px -26px rgba(0, 0, 0, 0.507) inset;
+    -moz-box-shadow: -1px 1px 54px -26px rgba(0, 0, 0, 0.514) inset;
 }
 .buttons{
     width: 300px;
@@ -65,6 +87,28 @@
     
     
 }
+.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: #1a1a1a;
+  
+}
+.credit{
+    text-align: center;
+    background-color: #1a1a1a;
+    color: white;    
+}
+a{
+    background-color: #1a1a1a;
+    color: rgb(185, 185, 185);  
+    transition: 0.3s;
+}
+a:hover{
+    color: rgb(87, 87, 87);  
+}
 .button{
     display: flex;
     justify-content: center;
@@ -77,6 +121,7 @@
     transition: 0.3s;
 
    
+
 }
 .equal-button{
     width: 125px;

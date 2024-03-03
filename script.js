@@ -13,6 +13,7 @@ const secondOutput=document.querySelector('#secondary-text');
 
 buttons.forEach(button=>{
     button.addEventListener('click',function getEventText(event){
+       
         buttonPressed=event.target.innerText;
         if(buttonPressed=='AC'){
             equation.length=0;
@@ -64,13 +65,17 @@ buttons.forEach(button=>{
             else{
                
                 if(equation[0]!=''){
+                   
                     equation.push(input);
                     console.table(equation);
+                    if(equation[0]!=''){
+                     console.log(equation[0]);
                 equation.push(buttonPressed);
                 secondOutput.textContent=equation.join("");
              output.textContent='';
              input="";
                console.table(equation);
+                    }
                 }
                 else
                 equation.length=0;
@@ -79,8 +84,20 @@ buttons.forEach(button=>{
              
         }
         else {
+            if(input.length>9){
+                alert('Cannot enter more than 10 digits.');
+            }else{
             output.textContent='';
+           if(buttonPressed=='.'){
+            if(input.includes('.')==false){
+                input+=buttonPressed;
+            }
+           }
+            else
             input+=buttonPressed;
+        
+           
+           
             let addComma=false;
            for(let i=1;i<=input.length;i++){
             
@@ -92,16 +109,28 @@ buttons.forEach(button=>{
             output.textContent+=input[i-1];
             console.log("i "+i)
             if(i%3==0&&i!=0){
-                addComma=true;
+                if(input.includes('.')==false){
+                    addComma=true;
+                }
+                
             }
     
-           
+        }
         }
 
-        }
+        
+            }
+        
+        
     })
 })
+
+function isFloat(n) {
+    return Number(n) === n && n % 1 !== 0;
+}
+
 function evaluate(arr){
+ 
     let operator=equation[1];
   
     let operands=equation.filter((value)=>equation.indexOf(value)%2==0);
@@ -123,13 +152,23 @@ function evaluate(arr){
             result=operands.reduce((total,num)=>total%num);
           break;
         case '÷':
+            if(operands[1]==0){
+               alert('You wish to crash my calculator?\n we can not divide by zero so we will convert the equation to zero');
+            }
+            else{
             result=operands.reduce((total,num)=>total/num);
+            }
           break;
         default:
           // code block
       }
       if(isNaN(result)==false){
+        if(isFloat(result)){
+            console.log('result is a float');
+            result=result.toFixed(2);
+        }
       output.textContent=result;
+      console.log(result);
       input=result.toString();
       equation.length=0;
       console.table(equation);
@@ -137,6 +176,7 @@ function evaluate(arr){
       else{
         equation.pop();
       }
+    
 
 }
 
